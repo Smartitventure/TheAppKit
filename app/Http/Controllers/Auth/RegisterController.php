@@ -53,12 +53,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'bname' => ['required', 'string', 'max:255'],
-            'fname' => ['required', 'string', 'max:255'],
-            'lname' => ['required', 'string', 'max:255'],
+            'business_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['required',],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'pwd' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:8'],
             'country' => ['required',],
         ]);
     }
@@ -75,13 +75,13 @@ class RegisterController extends Controller
         $date = $start->addDays(14);
         
         $user =  User::create([
-            'business_name' => $data['bname'],
-            'first_name' => $data['fname'],
-            'last_name' => $data['lname'],
+            'business_name' => $data['business_name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'number' => '+'.$data['phone_number_phoneCode'].''.$data['phone_number'],
             'email' => $data['email'],
             'country' => $data['country'],
-            'password' => Hash::make($data['pwd']),
+            'password' => Hash::make($data['password']),
             'expiry_date' => $date,
         ]);
         $user->roles()->attach(1);

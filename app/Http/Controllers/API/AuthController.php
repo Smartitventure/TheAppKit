@@ -9,8 +9,7 @@ use App\User;
 use DB;
 use App\Usertheme;
 use Illuminate\Support\Facades\Hash;
-
-
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -29,14 +28,16 @@ class AuthController extends Controller
 
     public function register(Request $request) 
     {
+     
+
         $user =  User::create([
-            'business_name' => $request['bname'],
-            'first_name' => $request['fname'],
-            'last_name' => $request['lname'],
+            'business_name' => $request['business_name'],
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
             'number' => '+'.$request['phone_number_phoneCode'].''.$request['phone_number'],
             'email' => $request['email'],
             'country' => $request['country'],
-            'password' => Hash::make($request['pwd']),
+            'password' => Hash::make($request['password']),
         ]);
 
         $user->roles()->attach(1);
@@ -44,9 +45,8 @@ class AuthController extends Controller
         $user_id =  DB::getPdo()->lastInsertId();
         \App\Usertheme::create([                    
             'user_id' => $user_id,
-            'theme_name' => $request['theme_name'],
+            'user_template' => $request['template_name'],
         ]);
-
         return response()->json([
             "message" => "User record created"
         ], 200);

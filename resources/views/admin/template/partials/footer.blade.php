@@ -22,6 +22,28 @@ crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
 
 <script>
+$(".product_size").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+})
+$(".product_color").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+})
+$(".product_material").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+})
+</script>
+<script>
+$(document).ready(function(){
+  $("#selectdata").click(function(){
+    $("#append").append(" <form><input type='text' name='' id=''><input type='text' name='' id=''></form><br>");
+  });
+});
+</script>
+
+<script>
 $(document).ready(function() {
   $("#formButton").click(function() {
     $("#form1").toggle();
