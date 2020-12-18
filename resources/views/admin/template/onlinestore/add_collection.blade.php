@@ -2,7 +2,7 @@
 @include('admin.template.partials.sidemenu')
 
     <div class="container"><br><br><br>
-        <h1>Add Collection</h1>
+        <h1>Add Collections</h1>
         <form method="POST" action="{{route('collection.store')}}" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1">Collection Name:</label>
