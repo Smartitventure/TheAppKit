@@ -22,6 +22,17 @@ crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
 
 <script>
+  $('#collection_name').on('keyup',function(){
+    var theTitle = this.value.toLowerCase().trim();
+    slugInput = $('#slug'),
+    theSlug = theTitle.replace(/&/g,'-and-')
+    .replace(/[^a-z0-9-]+/g,'-')
+    .replace(/\-\-+/g,'-');
+    slugInput.val(theSlug);
+  });
+</script>
+
+<script>
 $(".product_size").select2({
     tags: true,
     tokenSeparators: [',', ' ']
@@ -35,6 +46,7 @@ $(".product_material").select2({
     tokenSeparators: [',', ' ']
 })
 </script>
+
 <script>
 $(document).ready(function(){
   $("#selectdata").click(function(){

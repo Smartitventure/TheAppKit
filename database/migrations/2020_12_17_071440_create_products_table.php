@@ -22,11 +22,12 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('product_description');
             $table->string('product_image');
-            $table->string('product_display_name');
+            $table->string('product_display_image');
             $table->string('product_price');
+            $table->string('product_type');
             $table->string('sale_price');
             $table->string('stock_qty');
-            $table->string('shipping_weight')->nullable();
+            $table->string('shipping_weight');
             $table->string('shipping_length')->nullable();
             $table->string('shipping_width')->nullable();
             $table->string('shipping_height')->nullable();

@@ -33,7 +33,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
+    
     /**
      * Create a new controller instance.
      *
@@ -84,7 +84,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'expiry_date' => $date,
         ]);
-        $user->roles()->attach(1);
         
         $user_id =  DB::getPdo()->lastInsertId();
         \App\Usertheme::create([                    
@@ -93,7 +92,5 @@ class RegisterController extends Controller
         ]);
         return $user;
     }
-
-
-    
+  
 }

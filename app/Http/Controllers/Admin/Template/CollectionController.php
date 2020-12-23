@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin\Template;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Collection;
+use App\Usertheme;
+use Illuminate\Support\Str;
+use Session;
 
 class CollectionController extends Controller
 {
@@ -14,7 +18,8 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        return view("admin.template.onlinestore.collections");
+        $collections = Collection::get();
+        return view('admin.template.onlinestore.collections',  compact('collections'));
     }
 
     /**
@@ -22,6 +27,7 @@ class CollectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         return view("admin.template.onlinestore.add_collection");
@@ -35,9 +41,29 @@ class CollectionController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request,[
+            'collection_name'=>'required', 'string', 'max:255',
+            'collection_description'=>'required', 'string', 'max:255',
+        ]);
+        $data = array();
+        $data['collection_name'] = $request->collection_name;
+        $data['slug'] = $request->slug;
+        $data['user_id'] = $request->user_id;
+        $data['collection_description'] = $request->collection_description;
+        $image = $request->file('collection_image');
+        if ($image) {
+            $image_name = date('dmy_H_s_i');
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name.'.'.$ext;
+            $upload_path = 'public/media/';
+            $image_url = $upload_path.$image_full_name;
+            $success = $image->move($upload_path,$image_full_name);
+            $data['collection_image'] = $image_url;
+        }
+        $collection = Collection::create($data);
+        session::flash('statuscode','info');
+        return redirect('/collection')->with('status','Collection is Added');
     }
-
     /**
      * Display the specified resource.
      *

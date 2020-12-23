@@ -17,7 +17,7 @@
 										<div class="card-body">
 											<div class="row">
 												<div class="col-md-6">
-													<a href="{{ route('collection.create') }}" id="add" class="btn btn-info mb-3">Add Collection</a>
+													<a href="{{ route('collection.create')}}" id="add" class="btn btn-info mb-3">Add Collection</a>
 												</div>
 												<div class="col-md-6 text-right">
 													<div class="row">
@@ -34,8 +34,8 @@
 													</div>
 													<div class="col-md-6">
 													<select id="cat" name="cat" class="p-1 rounded">
-													<option value="name">Title</option>
-													<option value="description">Product Condition</option>
+														<option value="name">Title</option>
+														<option value="description">Product Count</option>
 													</select>
 													</div>
 													 <!-- Select-Box -->
@@ -43,26 +43,26 @@
 												</div>
 					
 											</div>
-					<table class="table table-bordered table-striped ">
-					  <thead>
-						<tr>
-						  <th scope="col" colspan="1"><a href="#" class=" text-dark border-bottom border-dark">Title</a></th>
-                            <th scope="col" colspan="1"><a href="#" class=" text-dark border-bottom border-dark">Product Condition</a></th>
-                            <th scope="col" ></th>
-						  <th scope="col" ></th>  
-						</tr>
-					  </thead>
-					  <tbody>
-					  <tr>
-                        <td scope="col"></td>
-                        <td></td>
-                        <td class="text-center"><a href="" id="" onclick="" class="btn btn-success" id="edit" name="edit" data-toggle="modal" data-target="#editmodal">EDIT</a></td>
-                        <td class="text-center"><a href="" class="btn btn-danger" data-toggle="modal" data-target="#delete" onclick="">DELETE</a></td>
-                      </tr>
-                 
-					  </tr>
-					  </tbody> 
-                    </table>
+									<table class="table table-bordered table-striped ">
+									<thead>
+										<tr>
+											<th scope="col" colspan="1"><a href="#" class=" text-dark border-bottom border-dark">Title</a></th>
+											<th scope="col" colspan="1"><a href="#" class=" text-dark border-bottom border-dark">Product country</a></th>
+											<th scope="col" ></th>
+											<th scope="col" ></th>  
+										</tr>
+									</thead>
+									<tbody>
+											@foreach($collections as $collection)
+											<tr>
+											<td scope="col">{{$collection->collection_name}}</td>
+											<td>1</td>
+											<td class="text-center"><a href="" id="" onclick="" class="btn btn-success" id="edit" name="edit" data-toggle="modal" data-target="#editmodal">EDIT</a></td>
+											<td class="text-center"><a href="" class="btn btn-danger" data-toggle="modal" data-target="#delete" onclick="">DELETE</a></td>
+											</tr>
+											@endforeach
+									</tbody> 
+									</table>
 									</div>	
 								</div>
 							</div>

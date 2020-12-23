@@ -5,21 +5,24 @@
         <h1>Add Product</h1>
         
         <form method="POST" action="{{route('add_product.store')}}" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label for="">Product Name:</label>
                 <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Product Name">
             </div>
-            
+            <div class="form-group">
+            <input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id}}">
+            </div>
             <div class="form-group">
                 <label for="">Product Description:</label>
-                <textarea class="form-control" id="product_description" name="product_description" rows="3">Product Description</textarea>
+                <textarea class="form-control" id="product_description" name="product_description" placeholder="Product Description" rows="3"></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Product Image:</label>
                 <input type="file" class="form-control" id="product_image" name="product_image">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Display Image:</label>
+                <label for="exampleInputPassword1">Product Gallery Images:</label>
                 <input type="file" class="form-control" id="product_display_image" name="product_display_image">
             </div>
             <!-- Product Prize: -->
@@ -47,7 +50,7 @@
             <div class="form-group">
             <div class="row">
                 <div class="col-md-2">
-                    <label for="exampleInputEmail1" class="float-right" >Stock:</label>
+                    <label for="exampleInputEmail1" class="float-right" >SKU (Stock Keeping Unit)</label>
                 </div>
                 <div class="col-md-6">
                     <input type="text" class="form-control" id="stock_qty" name="stock_qty" aria-describedby="emailHelp" placeholder="">
@@ -55,7 +58,32 @@
                 <div class="col-md-4"></div>
             </div>
             </div><br>
-
+            <div class="form-group">
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="exampleInputEmail1" class="float-right" >Product Type</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="product_type" name="product_type" aria-describedby="emailHelp" placeholder="">
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            </div><br>
+            <div class="form-group">
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="exampleInputEmail1" class="float-right" >Collection</label>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-control" id="product_collection" name="product_collection"> 
+                        @foreach($collections as $collection)
+                        <option>{{$collection->collection_name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            </div><br>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="shipping">
                 <label class="form-check-label" for="defaultCheck1">
@@ -64,7 +92,6 @@
             </div><br><br>
             <!-- Shipping  -->
             <div id="form_shipping">
-               
                 <div class="form-group"> 
                     <div class="row">
                         <div class="col-md-6">
@@ -133,7 +160,7 @@
                 </div>
             </div>
           
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="exampleInputPassword1"><b>Product Type:</b></label>
             </div>
             <div class="form-check form-check-inline">
@@ -175,11 +202,11 @@
                         </div>
                     </div>
                 </form>
-                <!-- <a id="btn1" href="#" >Add Flieds</a> -->
+                <a id="btn1" href="#" >Add Flieds</a>
                 <div id="append">
                 
                 </div>
-            </div><br>
+            </div><br> -->
             <button type="submit" class="btn btn-primary">Add Product</button>
     </form>
     </div>

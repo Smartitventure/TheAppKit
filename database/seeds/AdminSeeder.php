@@ -18,14 +18,16 @@ class AdminSeeder extends Seeder
         	'user_template'=> 'template',
         	'user_custom' => 'custom'
         ]);
-        Role::create([
-        	'role_name'=> 'user',
-        	'role_status'=>'active'
+        
+        $role= Role::create([
+        	'name'=> 'customer',
+        	'description'=>'Customer Role'
         ]);
-        $role = Role::create([
-        	'role_name'=> 'admin',
-        	'role_status'=>'active'
+        $role= Role::create([
+        	'name'=> 'admin',
+        	'description'=>'Admin Role'
         ]);
+
         $user = User::create([
             'business_name' => 'appkit',
             'first_name' => 'super',
@@ -34,7 +36,7 @@ class AdminSeeder extends Seeder
             'email' => 'admin@admin.com',
             'country' => 'India',
             'password' => bcrypt('adminking'),
+            'role_id' => $role->id,
         ]);
-        $user->roles()->attach($role->id);  
     }
 }
