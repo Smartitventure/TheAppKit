@@ -36,6 +36,7 @@ class AuthController extends Controller
             'number' => '+'.$request['phone_number_phoneCode'].''.$request['phone_number'],
             'email' => $request['email'],
             'country' => $request['country'],
+            'user_type' => $request['user_type'],
             'password' => Hash::make($request['password']),
         ]);
 
@@ -59,6 +60,15 @@ class AuthController extends Controller
     { 
        $user = User::all();
        return response()->json(['success' => $user], $this->successStatus);
+    }
+
+    public function delete($id) {
+        $user = User::findOrFail($id);
+        if($user)
+           $user->delete(); 
+        else
+            return response()->json(error);
+        return response()->json(null); 
     }
    
 }

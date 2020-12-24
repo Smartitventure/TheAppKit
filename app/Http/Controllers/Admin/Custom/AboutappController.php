@@ -35,25 +35,27 @@ class AboutappController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'app_name'=>'required', 'string', 'max:255',
         ]);
         $data = array();
         $data['app_name'] = $request->app_name;
         $data['app_idea'] = $request->app_idea;
-        $app_logo = $request->file('app_logo');
+        
+        //$app_logo = $request->file('app_logo');
         $wireframes = $request->file('wireframes');
-        if ($app_logo) {
-            $image_name = date('dmy_H_s_i');
-            $ext = strtolower($app_logo->getClientOriginalExtension());
-            $image_full_name = $image_name.'.'.$ext;
-            $upload_path = 'public/media/';
-            $image_url = $upload_path.$image_full_name;
-            $success = $app_logo->move($upload_path,$image_full_name);
-            $data['app_logo'] = $image_url;
-        }
+        //if ($app_logo) {
+        //    $image_name = date('dmy_H_s_i');
+        //    $ext = strtolower($app_logo->getClientOriginalExtension());
+        //    $image_full_name = $image_name.'.'.$ext;
+       //     $upload_path = 'public/media/';
+        //    $image_url = $upload_path.$image_full_name;
+       //     $success = $app_logo->move($upload_path,$image_full_name);
+        //    $data['app_logo'] = $image_url;
+      //  }
         if($wireframes)
-        {
+         {
             $file = $request->file('wireframes');
             $filename = time() . '.' . $request->file('wireframes')->extension();
             $filePath = '/files/uploads/';
@@ -61,7 +63,11 @@ class AboutappController extends Controller
             $file->move($filePath, $filename);
             $data['wireframes'] = $file_url;
         }
+        $data['idea'] = $request->idea;
+        $data['lookfor'] = $request->looking;
+        $data['website'] = $request->website;
         $user = Aboutapp::create($data);
+        
         session::flash('statuscode','info');
         return redirect('aboutapp')->with('status','Data is Added');
     }

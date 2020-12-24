@@ -51,12 +51,12 @@ Route::resource('/buildapp', 'BuildappController');
 Route::get('/theme_category/{slug}', 'ThemeCategoryController@show');
 
 Route::group(['as'=>'admin.','middleware' => ['auth','admin'] ],function(){
-
 // Super Admin
 Route::resource('/admin', 'Admin\AdminController');
 });
 
-Route::group(['as'=>'admin.','middleware' => ['auth'] ],function(){
+
+Route::group(['middleware' => ['auth'] ],function(){
 //Template Dashboard
 Route::resource('/dashboard', 'Admin\Template\DashboardController');
 Route::resource('/myapp', 'Admin\Template\MyappController');
@@ -70,6 +70,12 @@ Route::resource('/collection', 'Admin\Template\CollectionController');
 //Custom Dashboard
 Route::resource('/domaindetail', 'Admin\Custom\DomaindetailController');
 Route::resource('/aboutapp', 'Admin\Custom\AboutappController');
+Route::resource('/appstore', 'Admin\Custom\AppstoreController');
+Route::resource('/schedulechat', 'Admin\Custom\SchedulechatController');
+
+Route::resource('/designdetail', 'Admin\Custom\DesigndetailController');
+//Custom Dashboard
+Route::resource('/domaindetail', 'Admin\Custom\DomaindetailController');
 });
 
 

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Buildapp extends Model
+class Designdetail extends Model
 {
     protected $fillable = [
-        'user_template','user_custom',
+        'dp1', 'dp2', 'dp3', 'dp4', 'logo', 'design_details'
     ];
 }

@@ -16,9 +16,11 @@ class CreateAboutappsTable extends Migration
         Schema::create('aboutapps', function (Blueprint $table) {
             $table->id();
             $table->string('app_name');
-            $table->string('app_logo');
             $table->string('wireframes')->nullable();
             $table->string('app_idea');
+            $table->string('idea');
+            $table->string('lookfor');
+            $table->string('website');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBuildappsTable extends Migration
+class CreateAppstoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateBuildappsTable extends Migration
      */
     public function up()
     {
-        Schema::create('buildapps', function (Blueprint $table) {
+        Schema::create('appstores', function (Blueprint $table) {
             $table->id();
-            $table->string('user_template');
-            $table->string('user_custom');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateBuildappsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buildapps');
+        Schema::dropIfExists('appstores');
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Custom;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PaymentCardController extends Controller
+class SchedulechatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class PaymentCardController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.custom.schedulechat");
     }
 
     /**

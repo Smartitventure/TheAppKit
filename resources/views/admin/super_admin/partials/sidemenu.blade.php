@@ -8,6 +8,12 @@
         <nav class="sidenavbar">
             <ul class="sidenavbarul">
                 <li>
+                    <a class="" href="/domaindetail">
+                        <img class="" src="asset/images/sidebar-icon-3.png" alt="logo">
+                         <span class="menuname">Custom Users</span>
+                    </a>
+                </li>
+                <li>
                     <a class="" href="{{ route('logout') }}">
                         <img class="" src="asset/images/sidebar-icon-4.png" alt="logo"><span class="menuname"> Log out</span>
                         <form id="logout-form" action="/logout" method="POST" class="d-none">

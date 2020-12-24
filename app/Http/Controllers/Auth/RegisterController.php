@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
-use DB;
-use App\Usertheme;
-use App\Payment_card;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\User;
+use App\Usertheme;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -73,6 +74,7 @@ class RegisterController extends Controller
     {
         $start = new Carbon();
         $date = $start->addDays(14);
+
         
         $user =  User::create([
             'business_name' => $data['business_name'],
@@ -81,6 +83,8 @@ class RegisterController extends Controller
             'number' => '+'.$data['phone_number_phoneCode'].''.$data['phone_number'],
             'email' => $data['email'],
             'country' => $data['country'],
+            'user_type' => $data['user_type'],
+            'role_id' => $data['role_id'],
             'password' => Hash::make($data['password']),
             'expiry_date' => $date,
         ]);
@@ -91,6 +95,19 @@ class RegisterController extends Controller
         'user_template' => $data['template_name'],
         ]);
         return $user;
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->role->name == 'admin') {
+            $this->redirectTo = '/admin';
+
+        } elseif ($user->role->name == 'custom') {
+            $this->redirectTo = '/aboutapp';
+        } else {
+            $this->redirectTo = '/dashboard';
+        }
+        
     }
   
 }

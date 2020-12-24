@@ -28,15 +28,26 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                       
                         @if(isset($_GET['name']) && $_GET['name'] == 'custom')
                         <div class="form-group row">
                             <input type="hidden" id="template_name" name="template_name" value="data">
                         </div>
+                        <div class="form-group row">
+                            <input type="hidden" id="user_type" name="user_type" value="custom">
+                        </div>
+                        <div class="form-group row">
+                            <input type="hidden" id="role_id" name="role_id" value="1">
+                        </div>
                         @else
                         <div class="form-group row">
                             <input type="hidden" id="template_name" name="template_name" value="{{$theme->template_name}}">
-                        </div> 
+                        </div>
+                        <div class="form-group row">
+                            <input type="hidden" id="user_type" name="user_type" value="template">
+                        </div>
+                        <div class="form-group row">
+                            <input type="hidden" id="role_id" name="role_id" value="3">
+                        </div>  
                         @endif
                         <div class="form-group row">
                             <label for="business_name" class="col-md-4 col-form-label text-md-right">{{ __('Business Name') }}</label>
@@ -53,7 +64,6 @@
                             <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
                             <div class="col-md-6">
                                 <input id="first_name" type="text" class="form-control @error('name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" placeholder="Enter First Name" autofocus>
-
                                 @error('first_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

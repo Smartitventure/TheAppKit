@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Aboutapp extends Model
 {
     protected $fillable = [
-        'app_name', 'app_logo','wireframes','app_idea',
+        'app_name', 'wireframes', 'app_idea', 'idea', 'lookfor', 'website'
     ];
 }
