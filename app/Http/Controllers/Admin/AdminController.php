@@ -1,19 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Session;
+use App\User;
+use Auth;
 
-class PaymentCardController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware(['auth','admin']);
+    }
+
+    public function index()
+    {   
+        $users = User::where('user_type','custom')->paginate(3);
+        return view('admin.super_admin.admin',compact('users'));
     }
 
     /**

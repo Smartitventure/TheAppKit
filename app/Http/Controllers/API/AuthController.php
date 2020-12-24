@@ -28,8 +28,7 @@ class AuthController extends Controller
 
     public function register(Request $request) 
     {
-     
-
+    
         $user =  User::create([
             'business_name' => $request['business_name'],
             'first_name' => $request['first_name'],
@@ -37,10 +36,9 @@ class AuthController extends Controller
             'number' => '+'.$request['phone_number_phoneCode'].''.$request['phone_number'],
             'email' => $request['email'],
             'country' => $request['country'],
+            'user_type' => $request['user_type'],
             'password' => Hash::make($request['password']),
         ]);
-
-        $user->roles()->attach(1);
 
         $user_id =  DB::getPdo()->lastInsertId();
         \App\Usertheme::create([                    
@@ -55,7 +53,22 @@ class AuthController extends Controller
     public function details() 
     { 
         $user = Auth::user(); 
-        return response()->json(['success' => $user], $this-> successStatus); 
+        return response()->json(['success' => $user], $this->successStatus); 
+    }
+
+    public function index() 
+    { 
+       $user = User::all();
+       return response()->json(['success' => $user], $this->successStatus);
+    }
+
+    public function delete($id) {
+        $user = User::findOrFail($id);
+        if($user)
+           $user->delete(); 
+        else
+            return response()->json(error);
+        return response()->json(null); 
     }
    
 }

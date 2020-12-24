@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Buildapp extends Model
+class ProductCategory extends Model
 {
     protected $fillable = [
-        'user_template','user_custom',
+        'user_id','product_id','collection_id', 
     ];
 }

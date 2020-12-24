@@ -15,10 +15,10 @@ class CreateCollectionsTable extends Migration
     {
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('template_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('template_id')->nullable();
             $table->string('collection_name');
-            $table->string('slug')->unique()->nullable();
+            $table->string('slug')->unique();
             $table->string('collection_description');
             $table->string('collection_image');
             $table->timestamps();

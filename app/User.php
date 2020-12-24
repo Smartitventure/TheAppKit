@@ -10,6 +10,7 @@ use App\Role;
 use App\ThemeCategory;
 use App\ThemeTemplate;
 use App\Usertheme;
+use App\Collection;
 use App\Payment_card;
 
 class User extends Authenticatable
@@ -22,7 +23,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'business_name', 'first_name','last_name','number', 'email','country','password','expiry_date',
+        'business_name',
+        'first_name',
+        'last_name',
+        'number',
+        'user_type',
+        'role_id',
+        'email',
+        'country',
+        'password',
+        'expiry_date',
     ];
 
     /**
@@ -34,8 +44,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function roles(){
-        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+    public function role(){
+        return $this->belongsTo('App\Role');
     }
 
     public function themeCategories(){
@@ -48,6 +58,10 @@ class User extends Authenticatable
 
     public function userthemes(){
         return $this->hasMany('App\Usertheme');
+    }
+
+    public function collections(){
+        return $this->hasMany('App\Collection');
     }
      
     public function payment_cards(){

@@ -10,8 +10,6 @@ class BuildappController extends Controller
 {
     public function index()
     {
-        $buildapp = Buildapp::get();
-        $role = Role::get();
-        return view("appkit.build_app")->with('buildapp', $buildapp)->with('role', $role);
+        return view("appkit.build_app");
     }
 }
