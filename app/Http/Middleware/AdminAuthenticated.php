@@ -18,8 +18,13 @@ class AdminAuthenticated
     {
 
         if(Auth::User()->role->name == "custom"){
+            return redirect('/aboutapp');
+        }
+        elseif(Auth::User()->role->name == "template"){
             return redirect('/dashboard');
         }
+        else{
         return $next($request);
+        }
     }
 }

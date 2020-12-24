@@ -41,15 +41,12 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-
-            //$this->redirectTo = '/aboutapp';
-
         if ($user->role->name == 'admin') {
             $this->redirectTo = '/admin';
 
         } elseif ($user->role->name == 'custom') {
             $this->redirectTo = '/aboutapp';
-
+            
         } else {
             $this->redirectTo = '/dashboard';
         }

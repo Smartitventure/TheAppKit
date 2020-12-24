@@ -40,19 +40,20 @@ Route::get('/Ecommerce', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 // Themes
 Route::resource('/theme', 'ThemeController');
 Route::get('logout', 'ThemeController@logout');
-
 // Build App
 Route::resource('/buildapp', 'BuildappController');
-
 //ThemeCategory
 Route::get('/theme_category/{slug}', 'ThemeCategoryController@show');
 
-Route::group(['as'=>'admin.','middleware' => ['auth','admin'] ],function(){
+
+Route::group(['middleware' => ['auth','admin'] ],function(){
 // Super Admin
 Route::resource('/admin', 'Admin\AdminController');
+
 });
 
 
@@ -66,18 +67,12 @@ Route::resource('/publish', 'Admin\Template\PublishController');
 Route::resource('/myaccount', 'Admin\Template\MyaccountController');
 Route::resource('/add_product', 'Admin\Template\AddProductController');
 Route::resource('/collection', 'Admin\Template\CollectionController');
-
 //Custom Dashboard
 Route::resource('/domaindetail', 'Admin\Custom\DomaindetailController');
 Route::resource('/aboutapp', 'Admin\Custom\AboutappController');
 Route::resource('/appstore', 'Admin\Custom\AppstoreController');
 Route::resource('/schedulechat', 'Admin\Custom\SchedulechatController');
-
 Route::resource('/designdetail', 'Admin\Custom\DesigndetailController');
-//Custom Dashboard
 Route::resource('/domaindetail', 'Admin\Custom\DomaindetailController');
+
 });
-
-
-
-

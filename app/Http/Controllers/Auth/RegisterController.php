@@ -54,10 +54,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'business_name' => ['required', 'string', 'max:255'],
+            'business_name' => ['required', 'string', 'max:255','unique:users'],
             'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required',],
+            'phone_number' => 'required',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'country' => ['required',],
@@ -97,17 +96,17 @@ class RegisterController extends Controller
         return $user;
     }
 
-    protected function authenticated(Request $request, $user)
-    {
-        if ($user->role->name == 'admin') {
-            $this->redirectTo = '/admin';
+    // protected function authenticated(Request $request, $user)
+    // {
+    //     if ($user->role->name == 'admin') {
+    //         $this->redirectTo = '/admin';
 
-        } elseif ($user->role->name == 'custom') {
-            $this->redirectTo = '/aboutapp';
-        } else {
-            $this->redirectTo = '/dashboard';
-        }
+    //     } elseif ($user->role->name == 'custom') {
+    //         $this->redirectTo = '/aboutapp';
+    //     } else {
+    //         $this->redirectTo = '/dashboard';
+    //     }
         
-    }
+    // }
   
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use User;
-
+use App\User;
+use App\Role;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        if(Auth::user()->role->name == 'custom')
+        {
+            return redirect('/aboutapp');
+        }
+        else
+        {
+            return redirect('/dashboard');
+        }
     }
 }

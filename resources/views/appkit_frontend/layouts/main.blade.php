@@ -47,12 +47,35 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="{{ URL::to('contact') }}">Contact us</a>
                               </li>
+                              @guest  
+                                 @if (Route::has('logout'))
+                                    <li class="nav-item">
+                                       <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                 @endif
+                                 <div class=" my-2 my-lg-0 right-search">
+                                    <a class="btncreateapp " href="{{ URL::to('buildapp') }}">
+                                    Create a App
+                                    </a>
+                                 </div>
+                                 @else
+                                    <li class="nav-item dropdown">
+                                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                          {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                                       </a>
+                                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                          <a class="dropdown-item" href="{{ route('logout') }}"
+                                             onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                          </a>
+                                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                          </form>
+                                       </div>
+                                    </li>
+                              @endguest
                            </ul>
-                           <div class=" my-2 my-lg-0 right-search">
-                              <a class="btncreateapp " href="{{ URL::to('buildapp') }}">
-                              Create a App
-                              </a>
-                           </div>
                         </div>
                      </nav>
                   </div>

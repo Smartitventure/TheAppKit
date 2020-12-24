@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('business_name')->unique();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('number')->unique();
+            $table->string('number');
             $table->string('email')->unique();
             $table->string('country');
             $table->string('password');
