@@ -772,3 +772,9 @@ a.admincamera-btn {
     position: relative;
 }
 /* stylist profile  full page css */
+.scd_cht a {
+    background: #007bff;
+    padding: 16px;
+    color: #fff;
+    border-radius: 5px;
+}

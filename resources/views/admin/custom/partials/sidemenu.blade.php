@@ -12,6 +12,19 @@
                         <img class="" src="asset/images/sidebar-icon-1.png" alt="logo"> <span class="menuname">About App</span>
                     </a>
                 </li>
+                 <li>
+                    <a class="" href="/schedulechat">
+                        <img class="" src="asset/images/sidebar-icon-3.png" alt="logo">
+                         <span class="menuname">Schedule a chat</span>
+                    </a>
+                </li>
+                 <li>
+                    <a class="" href="/appstore">
+                        <img class="" src="asset/images/sidebar-icon-3.png" alt="logo">
+                         <span class="menuname">App Store</span>
+                    </a>
+                </li>
+                
                 <li>
                     <a class="" href="/domaindetail">
                         <img class="" src="asset/images/sidebar-icon-3.png" alt="logo">
@@ -19,7 +32,7 @@
                     </a>
                 </li>
                 <li>
-                <a class="" href="">
+                <a class="" href="/designdetail">
                     <img class="" src="asset/images/sidebar-icon-5.png" alt="logo">
                     <span class="menuname">Design</span>
                 </a>
@@ -39,10 +52,29 @@
                     <img class="" src="asset/images/sidebar-icon-5.png" alt="logo">
                     <span class="menuname">Bugs</span>
                 </a>
-                </li> <li>
+                </li>
+                <li>
                 <a class="" href="">
                     <img class="" src="asset/images/sidebar-icon-5.png" alt="logo">
                     <span class="menuname">Payments</span>
+                </a>
+                </li>
+                 <li>
+                <a class="" href="">
+                    <img class="" src="asset/images/sidebar-icon-5.png" alt="logo">
+                    <span class="menuname">Agreement</span>
+                </a>
+                </li>
+                 <li>
+                <a class="" href="">
+                    <img class="" src="asset/images/sidebar-icon-5.png" alt="logo">
+                    <span class="menuname">Team</span>
+                </a>
+                </li>
+                  <li>
+                <a class="" href="">
+                    <img class="" src="asset/images/sidebar-icon-5.png" alt="logo">
+                    <span class="menuname">My Account</span>
                 </a>
                 </li>
                 <li>
