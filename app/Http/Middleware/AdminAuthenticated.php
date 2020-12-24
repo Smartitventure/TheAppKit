@@ -17,7 +17,7 @@ class AdminAuthenticated
     public function handle($request, Closure $next)
     {
 
-        if(Auth::User()->role->name == "customer"){
+        if(Auth::User()->role->name == "custom"){
             return redirect('/dashboard');
         }
         return $next($request);
