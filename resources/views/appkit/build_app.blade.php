@@ -11,12 +11,6 @@
                     <h5>Select a mordern template</h5>
                         <p> Start building your app with ur app builder platform.<br>
                             no coding require</p><br>
-                            <!-- <form method ="POST" action="{{route('theme.index')}}">
-                                @foreach($buildapp as $data)
-                                <input type="hidden" id="name" name="name" value="{{$data->user_template}}">
-                                @endforeach
-                                <button type="submit" class="btn btn-primary">Select a template</button>
-                            </form> -->
                             <a href="{{route('theme.index')}}" class="btn btn-primary">Select a template</a>
                     </div>
                 <div class="col-md-6">
@@ -24,10 +18,8 @@
                         <p> Start building your app with ur app builder platform.<br>
                             no coding require</p><br>
                         <form method ="GET" action="{{route('register')}}">
-                            @foreach($buildapp as $data)
-                            <input type="hidden" id="name" name="name" value="{{$data->user_custom}}">
-                            <button type="submit" class="btn btn-danger">Let's talk</button>
-                            @endforeach
+                                <input type="hidden" id="name" name="name" value="custom">
+                                <button type="submit" class="btn btn-danger">Let's talk</button>
                         </form>
                 </div>
             </div>

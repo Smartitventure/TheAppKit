@@ -36,7 +36,7 @@ Route::group(['as'=>'admin.','middleware' => ['auth','admin'] ],function(){
 Route::resource('/admin', 'Admin\AdminController');
 });
 
-Route::group(['as'=>'admin.','middleware' => ['auth'] ],function(){
+Route::group(['middleware' => ['auth'] ],function(){
 //Template Dashboard
 Route::resource('/dashboard', 'Admin\Template\DashboardController');
 Route::resource('/myapp', 'Admin\Template\MyappController');

@@ -22,7 +22,7 @@ class AdminController extends Controller
 
     public function index()
     {   
-        $users = User::all();
+        $users = User::where('user_type','custom')->paginate(3);
         return view('admin.super_admin.admin',compact('users'));
     }
 

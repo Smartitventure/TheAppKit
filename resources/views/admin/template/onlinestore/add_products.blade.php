@@ -160,7 +160,7 @@
                 </div>
             </div>
           
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputPassword1"><b>Product Type:</b></label>
             </div>
             <div class="form-check form-check-inline">
@@ -202,11 +202,11 @@
                         </div>
                     </div>
                 </form>
-                <a id="btn1" href="#" >Add Flieds</a>
+                <!-- <a id="btn1" href="#" >Add Flieds</a> -->
                 <div id="append">
                 
                 </div>
-            </div><br> -->
+            </div><br>
             <button type="submit" class="btn btn-primary">Add Product</button>
     </form>
     </div>
