@@ -14,7 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('appkit_frontend.index');
+});
+
+Route::get('/pricing', function () {
+    return view('appkit_frontend.pricing');
+});
+
+Route::get('/solutions', function () {
+    return view('appkit_frontend.solutions');
+});
+
+Route::get('/work', function () {
+    return view('appkit_frontend.work');
+});
+
+Route::get('/contact', function () {
+    return view('appkit_frontend.contact');
+});
+
+Route::get('/Ecommerce', function () {
+    return view('appkit_frontend.Ecommerce');
 });
 
 Auth::routes();

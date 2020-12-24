@@ -24,10 +24,8 @@
                         <p> Start building your app with ur app builder platform.<br>
                             no coding require</p><br>
                         <form method ="GET" action="{{route('register')}}">
-                            @foreach($buildapp as $data)
-                            <input type="hidden" id="name" name="name" value="{{$data->user_custom}}">
+                            <input type="hidden" id="name" name="name" value="custom">
                             <button type="submit" class="btn btn-danger">Let's talk</button>
-                            @endforeach
                         </form>
                 </div>
             </div>
