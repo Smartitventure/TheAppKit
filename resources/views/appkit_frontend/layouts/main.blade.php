@@ -47,7 +47,7 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="{{ URL::to('contact') }}">Contact us</a>
                               </li>
-                              @guest  
+                              @guest
                                  @if (Route::has('logout'))
                                     <li class="nav-item">
                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -89,6 +89,8 @@
       @yield('solutions')
       @yield('work')
       @yield('Ecommerce')
+      @yield('login')
+
 
 
         <!-- footer start-->

@@ -50,7 +50,7 @@ Route::resource('/buildapp', 'BuildappController');
 Route::get('/theme_category/{slug}', 'ThemeCategoryController@show');
 
 
-Route::group(['middleware' => ['auth','admin'] ],function(){
+Route::group(['middleware' => ['auth','admin'] ],function() {
 // Super Admin
 Route::resource('/admin', 'Admin\AdminController');
 
